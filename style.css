@@ -131,6 +131,61 @@ th { background: var(--note-bg); }
 .toc strong { display: block; margin-bottom: 6px; }
 .toc ol { margin: 0; padding-left: 20px; }
 
+/* Calculator (interactive tool) */
+.calc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 18px;
+  margin: 22px 0;
+}
+.calc .field { margin: 0 0 16px; }
+.calc label { display: block; font-weight: 600; margin: 0 0 6px; color: var(--brand-ink); }
+.calc .hint { font-weight: 400; color: var(--ink-soft); font-size: 0.85rem; }
+.calc select, .calc input[type="number"] {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+.calc .seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.calc .seg label {
+  flex: 1 1 30%;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fff;
+}
+.calc .seg input { position: absolute; opacity: 0; pointer-events: none; }
+.calc .seg label:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--note-bg);
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+.calc .row { display: flex; gap: 12px; flex-wrap: wrap; }
+.calc .row .field { flex: 1 1 140px; }
+.result {
+  background: var(--note-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px;
+  margin: 8px 0 0;
+}
+.result .big { display: flex; gap: 22px; flex-wrap: wrap; margin: 0 0 10px; }
+.result .big div { flex: 1 1 120px; }
+.result .num { font-size: 1.9rem; font-weight: 800; color: var(--brand-ink); line-height: 1.1; }
+.result .cap { font-size: 0.85rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+.result ul { margin: 8px 0 0; }
+.result .tips { font-size: 0.95rem; color: var(--ink); }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); font-size: 0.9rem; }
 .site-footer .wrap { padding: 26px 20px; }

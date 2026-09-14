@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalkulator Rasio Kopi: Takaran Kopi & Air Otomatis (V60, French Press, Tubruk) — Seduh</title>
+<meta name="description" content="Kalkulator gratis untuk menghitung takaran kopi dan air sesuai rasio dan metode seduh (V60, French press, tubruk, AeroPress). Masukkan jumlah cangkir, air, atau kopi — langsung dapat takarannya.">
+<link rel="canonical" href="https://adhafajri.github.io/seduh-site/alat/kalkulator-rasio-kopi.html">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Seduh<small>KOPI DI RUMAH</small></a>
+    <nav class="nav">
+      <a href="../index.html">Beranda</a>
+      <a href="../disclosure.html">Keterbukaan</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Kalkulator Rasio Kopi</h1>
+    <p class="meta">Alat gratis · Diperbarui 14 September 2026</p>
+
+    <p class="lead">Bingung berapa gram kopi untuk sekian ml air? Isi salah satu
+    kolom di bawah, pilih metode seduhmu, dan kalkulator ini langsung menghitung
+    takaran kopi &amp; air yang pas — tanpa kira-kira.</p>
+
+    <div class="note">
+      <strong>Kenapa rasio penting?</strong> Rasa kopi paling ditentukan oleh
+      perbandingan kopi:air. Menimbang (bukan pakai sendok) adalah cara termurah
+      bikin seduhanmu konsisten. Baru mulai? Baca dulu
+      <a href="../panduan/seduh-kopi-untuk-pemula.html">Panduan Seduh Kopi untuk Pemula</a>.
+    </div>
+
+    <form class="calc" id="calc" autocomplete="off">
+      <div class="field">
+        <label for="method">Metode seduh <span class="hint">(mengatur rasio &amp; tips otomatis)</span></label>
+        <select id="method">
+          <option value="v60" data-ratio="15">V60 / Pour-over (rasio 1:15)</option>
+          <option value="aeropress" data-ratio="14">AeroPress (rasio 1:14)</option>
+          <option value="frenchpress" data-ratio="12">French Press (rasio 1:12)</option>
+          <option value="tubruk" data-ratio="13">Kopi Tubruk (rasio 1:13)</option>
+          <option value="custom" data-ratio="15">Lainnya / atur sendiri</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Saya sudah tahu <span class="hint">(pilih satu yang kamu punya)</span></label>
+        <div class="seg" role="radiogroup" aria-label="Hitung dari">
+          <label><input type="radio" name="mode" value="cups" checked> Jumlah cangkir</label>
+          <label><input type="radio" name="mode" value="water"> Jumlah air (ml)</label>
+          <label><input type="radio" name="mode" value="coffee"> Jumlah kopi (g)</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field" id="f-cups">
+          <label for="cups">Jumlah cangkir</label>
+          <input type="number" id="cups" min="1" max="20" step="1" value="1" inputmode="numeric">
+        </div>
+        <div class="field" id="f-cupsize">
+          <label for="cupsize">Ukuran 1 cangkir (ml)</label>
+          <input type="number" id="cupsize" min="60" max="600" step="10" value="220" inputmode="numeric">
+        </div>
+        <div class="field" id="f-water" hidden>
+          <label for="water">Jumlah air (ml)</label>
+          <input type="number" id="water" min="30" max="6000" step="10" value="225" inputmode="numeric">
+        </div>
+        <div class="field" id="f-coffee" hidden>
+          <label for="coffee">Jumlah kopi (g)</label>
+          <input type="number" id="coffee" min="3" max="500" step="0.5" value="15" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="ratio">Rasio 1 : <span id="ratioVal">15</span> <span class="hint">(makin kecil = makin kuat)</span></label>
+          <input type="number" id="ratio" min="8" max="20" step="0.5" value="15" inputmode="decimal">
+        </div>
+      </div>
+    </form>
+
+    <div class="result" id="result" aria-live="polite">
+      <!-- filled by JS; static fallback below for no-JS visitors -->
+      <div class="big">
+        <div><div class="num" id="outCoffee">15,0 g</div><div class="cap">Kopi</div></div>
+        <div><div class="num" id="outWater">225 ml</div><div class="cap">Air (± 225 g)</div></div>
+      </div>
+      <div class="tips" id="outTips"></div>
+    </div>
+
+    <p style="margin-top:10px"><small id="noscript-note">Kalkulator butuh
+    JavaScript. Tanpa itu, patokan aman: <strong>rasio 1:15</strong> = 15 g kopi
+    untuk 225 ml air (± 1 cangkir).</small></p>
+
+    <h2>Cara pakai (dan sedikit ilmunya)</h2>
+    <ul>
+      <li><strong>Rasio</strong> adalah perbandingan berat kopi : berat air.
+      Rasio 1:15 artinya tiap 1 g kopi butuh 15 g air (1 ml air ≈ 1 g).</li>
+      <li><strong>Ingin lebih kuat?</strong> Turunkan angka rasio (mis. 1:14 atau
+      1:13). <strong>Lebih ringan?</strong> Naikkan (1:16). Ubah satu langkah saja
+      tiap kali, lalu cicipi.</li>
+      <li><strong>Timbang, jangan kira-kira.</strong> Sendok takar tidak akurat
+      karena berat bubuk berbeda-beda. Timbangan digital 0,1 g adalah alat
+      paling menentukan konsistensi.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Butuh alatnya?</strong> Takaran akurat butuh timbangan, dan rasa
+      butuh gilingan yang pas. Lihat rekomendasi hemat di
+      <a href="../panduan/alat-seduh-kopi-pemula.html">Alat Seduh Kopi Pemula</a>.
+    </div>
+
+    <h2>Metode &amp; patokan rasio</h2>
+    <table>
+      <tr><th>Metode</th><th>Rasio awal</th><th>Gilingan</th></tr>
+      <tr><td>V60 / Pour-over</td><td>1:15</td><td>Sedang–halus (seperti pasir meja)</td></tr>
+      <tr><td>AeroPress</td><td>1:14</td><td>Sedang–halus</td></tr>
+      <tr><td>French Press</td><td>1:12</td><td>Kasar (seperti garam kasar)</td></tr>
+      <tr><td>Kopi Tubruk</td><td>1:13</td><td>Sedang–kasar</td></tr>
+    </table>
+    <p>Angka ini titik awal, bukan aturan mati. Pakai kalkulator untuk takarannya,
+    lalu sesuaikan rasio sesuai selera.</p>
+
+    <h2>Langkah selanjutnya</h2>
+    <ul>
+      <li>Praktik metode paling populer: <a href="../panduan/cara-seduh-v60-pour-over.html">Cara Seduh V60 (Pour-Over) Langkah demi Langkah</a>.</li>
+      <li>Lengkapi alatmu: <a href="../panduan/alat-seduh-kopi-pemula.html">Alat Seduh Kopi Pemula</a>.</li>
+      <li>Kembali ke dasar: <a href="../panduan/seduh-kopi-untuk-pemula.html">Panduan Seduh Kopi untuk Pemula</a>.</li>
+    </ul>
+
+    <hr>
+    <p><a href="../index.html">← Kembali ke beranda Seduh</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>Seduh</strong> — panduan seduh kopi di rumah, berbahasa Indonesia.</p>
+    <p><a href="../disclosure.html">Keterbukaan Afiliasi</a> · Konten untuk tujuan edukasi.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var els = {
+    method: $("method"), ratio: $("ratio"), ratioVal: $("ratioVal"),
+    cups: $("cups"), cupsize: $("cupsize"), water: $("water"), coffee: $("coffee"),
+    fCups: $("f-cups"), fCupsize: $("f-cupsize"), fWater: $("f-water"), fCoffee: $("f-coffee"),
+    outCoffee: $("outCoffee"), outWater: $("outWater"), outTips: $("outTips"),
+    nsNote: $("noscript-note")
+  };
+  if (els.nsNote) { els.nsNote.parentNode.style.display = "none"; }
+
+  var TIPS = {
+    v60:         { grind: "sedang–halus (seperti pasir meja)", temp: "90–96 °C", bloom: true },
+    aeropress:   { grind: "sedang–halus", temp: "80–90 °C", bloom: false },
+    frenchpress: { grind: "kasar (seperti garam kasar)", temp: "92–96 °C, seduh ± 4 menit", bloom: false },
+    tubruk:      { grind: "sedang–kasar", temp: "air baru mendidih, diamkan sampai ampas turun", bloom: false },
+    custom:      { grind: "sesuaikan metode", temp: "90–96 °C untuk kebanyakan metode", bloom: false }
+  };
+
+  // Indonesian decimal formatting (comma as decimal separator).
+  function fmt(n, dp) {
+    var s = n.toFixed(dp);
+    return dp > 0 ? s.replace(".", ",") : s;
+  }
+  function num(el, fallback) {
+    var v = parseFloat(el.value);
+    return (isFinite(v) && v > 0) ? v : fallback;
+  }
+  function mode() {
+    var r = document.querySelector('input[name="mode"]:checked');
+    return r ? r.value : "cups";
+  }
+
+  function showFields() {
+    var m = mode();
+    els.fCups.hidden = m !== "cups";
+    els.fCupsize.hidden = m !== "cups";
+    els.fWater.hidden = m !== "water";
+    els.fCoffee.hidden = m !== "coffee";
+  }
+
+  function compute() {
+    var ratio = num(els.ratio, 15);
+    els.ratioVal.textContent = fmt(ratio, ratio % 1 === 0 ? 0 : 1);
+    var m = mode();
+    var coffee, water;
+
+    if (m === "coffee") {
+      coffee = num(els.coffee, 15);
+      water = coffee * ratio;
+    } else {
+      if (m === "cups") {
+        water = num(els.cups, 1) * num(els.cupsize, 220);
+      } else {
+        water = num(els.water, 225);
+      }
+      coffee = water / ratio;
+    }
+
+    els.outCoffee.textContent = fmt(coffee, 1) + " g";
+    els.outWater.textContent = Math.round(water) + " ml";
+    els.outWater.nextElementSibling.textContent = "Air (± " + Math.round(water) + " g)";
+
+    var t = TIPS[els.method.value] || TIPS.custom;
+    var lines = [
+      "<strong>Gilingan:</strong> " + t.grind,
+      "<strong>Suhu air:</strong> " + t.temp
+    ];
+    if (t.bloom) {
+      lines.push("<strong>Blooming:</strong> tuang ± " + fmt(coffee * 2, 0) +
+        " g air dulu, diamkan 30–35 detik, baru lanjut sampai " + Math.round(water) + " g.");
+    }
+    els.outTips.innerHTML = "<ul><li>" + lines.join("</li><li>") + "</li></ul>";
+  }
+
+  function onMethodChange() {
+    var opt = els.method.options[els.method.selectedIndex];
+    var r = parseFloat(opt.getAttribute("data-ratio"));
+    if (isFinite(r)) { els.ratio.value = r; }
+    compute();
+  }
+
+  els.method.addEventListener("change", onMethodChange);
+  ["ratio", "cups", "cupsize", "water", "coffee"].forEach(function (id) {
+    $(id).addEventListener("input", compute);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name="mode"]'), function (el) {
+    el.addEventListener("change", function () { showFields(); compute(); });
+  });
+
+  showFields();
+  compute();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e401f56b8e1b4ef98f65f7e0180cc473"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
